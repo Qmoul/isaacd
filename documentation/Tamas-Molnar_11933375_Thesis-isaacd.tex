@@ -1,0 +1,103 @@
+% Expose template 
+% adapted by Wolfgang Klas, 
+% initially derived from the UniVie Computer Science template for the Master's Thesis by Christoph Loitzenbauer
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{UniVie_CS_MIS_Expose}[2021/02/01 UniVie Computer Science Multimiedia Information Systems Group template for the Master's Thesis Expose]
+
+\LoadClass[11pt]{article}
+
+% -- Packages needed in the class
+\RequirePackage[a-1b]{pdfx}
+\RequirePackage{graphicx} % Required for including pictures
+\RequirePackage[pdfa]{hyperref}
+\RequirePackage[T1]{fontenc} % Required for accented characters
+\RequirePackage{changepage}
+\RequirePackage[final]{microtype}
+\RequirePackage{xurl}
+\usepackage[margin=2.5cm]{geometry} % To decrease the border margins.
+\usepackage[numbers]{natbib} % To enumerate the bibliography
+
+
+% -- Commands for the title page --------------
+
+% -- Title of the work 
+\newcommand{\TitleValue}{Titel\grqq \vspace*{\baselineskip} \vspace*{\baselineskip}}
+
+% -- Name
+\newcommand{\WhoValue}{\textgreater Akademische(r) Grad(e) Vorname Zuname Akademische(r) Grad(e)\textless \par \textgreater degree(s) first name family name degree(s)\textless \par }
+
+% -- Degree programme code
+\newcommand{\ProgrammeCodeValue}{ \textgreater 000 000\textless  }
+
+% -- Matr Nr
+\newcommand{\MatrNrValue}{\textgreater a0123456789\textless \par \textgreater a0123456789\textless \par }
+
+% -- Date
+\newcommand{\DateValue}{\textgreater Tag Monat Jahr\textless }
+
+% -- Supervisors
+\newcommand{\SupervisorValue}{\textgreater Akademische(r) Grad(e)  Vorname Zuname\textless \hspace{0.1cm}/}
+\newcommand{\SupervisorEngValue}{ \textgreater degree(s) first name family name\textless}
+\newcommand{\CoSupervisorValue}{\textgreater Akademische(r) Grad(e)  Vorname Zuname\textless \hspace{0.1cm}/}
+\newcommand{\CoSupervisorEngValue}{ \textgreater degree(s) first name family name\textless}
+%\newcommand{\CoSupValue}{0} % true false if there is a cosupervisor or not
+
+\newcommand{\ResearchAssistantValue}{\textgreater Akademische(r) Grad(e)  Vorname Zuname\textless \hspace{0.1cm}/}
+\newcommand{\ResearchAssistantEngValue}{ \textgreater degree(s) first name family name\textless}
+%\newcommand{\ResearchAssValue}{0} % ture false if there is a research assistant is daily contact point or not
+
+% -- Commands to update the values
+\newcommand{\Title}[1]{\renewcommand{\TitleValue}{#1}}
+\newcommand{\Who}[1]{\renewcommand{\WhoValue}{#1}}
+\newcommand{\ProgrammeCode}[1]{\renewcommand{\ProgrammeCodeValue}{#1}}
+\newcommand{\MatrNr}[1]{\renewcommand{\MatrNrValue}{#1}}
+\newcommand{\Supervisor}[1]{\renewcommand{\SupervisorValue}{#1} \renewcommand{\SupervisorEngValue}{}}
+\newcommand{\CoSupervisor}[1]{\renewcommand{\CoSupervisorValue}{#1}\renewcommand{\CoSupervisorEngValue}{}}
+\newcommand{\ResearchAssistant}[1]{\renewcommand{\ResearchAssistantValue}{#1}\renewcommand{\ResearchAssistantEngValue}{}}
+\newcommand{\Date}[1]{\renewcommand{\DateValue}{#1}}
+
+% -- Command to generate the header
+\newcommand{\ExposeHeader}{
+	\fontfamily{phv}\selectfont
+	\vspace*{-2cm}
+	\hspace*{7.5cm}
+	%University logo
+	\includegraphics[width=0.5\linewidth]{figures/logo_nontransparent.jpg}\par
+	\vspace{0.5cm}
+    \todo[inline]{\textit{These yellow notes are instructional comments. When finished,  turn OFF these notes by selecting the proper usepackage\{todonotes\} command with the option "disable". See instructions at the beginning of the main.tex file.}}			
+	\begin{tabular}{ll}
+		\hspace{9.25cm} \vspace{0.25cm} &  \small{\textbf{Faculty of Computer Science}}\\
+		 & \footnotesize Research Group \\
+		 & \footnotesize Cooperative Systems  \\
+		 & \footnotesize Sensengasse 6 \\
+		\vspace{0.25cm} & \footnotesize A-1090 Wien \\
+		 & \footnotesize https://cosy.cs.univie.ac.at/ \\
+	\end{tabular}
+	\vspace{0.25cm}
+	\begin{flushleft}
+	    Topic of the master thesis for: \WhoValue \\
+	    \todo{\textit{Edit the exposeheader.tex file.}}
+	    Matriculation number: \MatrNrValue \\
+	    %Study code:  \ProgrammeCodeValue \\
+        Examiner/Supervisor: \SupervisorValue \\
+        \if\CoSupValue0
+	    \else
+	        2\textsuperscript{nd} Examiner/2\textsuperscript{nd} Supervisor: \CoSupervisorValue \\
+	    \fi
+	    \if\ResearchAssValue0
+	    \else
+	        Additional contact person: \ResearchAssistantValue \\
+	    \fi
+	\end{flushleft}
+
+	\begin{flushright}
+	    Wien, \DateValue
+	\end{flushright}
+
+	\begin{center}
+	    \textbf{Survey Paper} \\
+	    \vspace{0.25cm}
+	    \TitleValue
+	\end{center}
+}
